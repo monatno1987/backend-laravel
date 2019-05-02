@@ -10,7 +10,10 @@ class SentenceController extends Controller
 
     public function countwords(Request $request)
     {
+        $dev = [];
         $sente = $request->sentence;
+        if ($sente == "")
+            return ;
 
             //guardo las palabras en un array
         $array_cadena = str_word_count($sente, 1);
@@ -18,7 +21,7 @@ class SentenceController extends Controller
         $array_cadena = explode(' ', $sente);
 
 
-        $dev = [];
+
         foreach ($array_cadena as $d)
         {
             if (array_key_exists($d, $dev)) {
