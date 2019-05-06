@@ -17,8 +17,8 @@ class SentenceController extends Controller
 		#$sente = preg_replace('/[0-9]/', '', $$request->sentence)
 		$solo_letras = preg_replace('/[A-Za-z]/', '', $sente);  
         #$sente = preg_replace('[\n\t]', ' ', $sente);
-        $array_cadena = explode('', $solo_letras);
-
+        #$array_cadena = str_split($solo_letras);
+        
 
         $dev = [];
         foreach ($array_cadena as $d)
