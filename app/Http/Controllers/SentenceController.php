@@ -15,9 +15,9 @@ class SentenceController extends Controller
             //guardo las palabras en un array
         #$array_cadena = str_word_count($sente, 1);
 		#$sente = preg_replace('/[0-9]/', '', $$request->sentence)
-		$sente = ereg_replace("[^A-Za-z]", "", $sente);
+		$solo_letras = preg_replace('/[A-Za-z]/', '', $sente);  
         #$sente = preg_replace('[\n\t]', ' ', $sente);
-        $array_cadena = explode('', $sente);
+        $array_cadena = explode('', $solo_letras);
 
 
         $dev = [];
