@@ -10,27 +10,34 @@ class SentenceController extends Controller
 
     public function countwords(Request $request)
     {
+        $dev = [];
         $sente = $request->sentence;
+        if ($sente == "")
+            return ;
 
             //guardo las palabras en un array
-        #$array_cadena = str_word_count($sente, 1);
-		#$sente = preg_replace('/[0-9]/', '', $$request->sentence)
-		$solo_letras = preg_replace('/[A-Za-z]/', '', $sente);  
-        #$sente = preg_replace('[\n\t]', ' ', $sente);
-        $array_cadena = str_split($solo_letras);
-        
+        $array_cadena = str_word_count($sente, 1);
 
-        $dev = [];
+        $sente = preg_replace('[\n\t]', ' ', $sente);
+        $array_cadena = explode(' ', $sente);
+
+
+
         foreach ($array_cadena as $d)
         {
-            if (array_key_exists($d, $dev)) {
-                $dev[$d]++;
-            } else {
-                $dev[$d] = 1;
+            if ($d = preg_replace( '/[^A-Za-z]/', '', $d))
+            {
+                if (array_key_exists($d, $dev)) {
+                    $dev[$d]++;
+                } else {
+                    $dev[$d] = 1;
+                }
             }
         }
 
+
         return $dev;
+
     }
     /**
      * Display a listing of the resource.
